@@ -1,3 +1,5 @@
+1st Procedure
+
 DELIMITER
  //
 CREATE PROCEDURE findstudentbyname (
@@ -15,3 +17,20 @@ DELIMITER ;
 select  @result;
 
 call findstudentbyname ("Lokesh", @result);
+
+
+
+----------------------------------------------------
+2nd Procedure
+
+DELIMITER //
+CREATE PROCEDURE findstudentbyId (
+IN   id INT,
+    OUT  result VARCHAR(25))
+BEGIN
+	select t.name into result from student as t where t.id=id;
+END //
+DELIMITER ;
+
+call findstudentbyId (6, @result);
+select  @result;
